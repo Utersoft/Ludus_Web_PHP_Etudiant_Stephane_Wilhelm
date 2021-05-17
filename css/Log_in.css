@@ -1,0 +1,87 @@
+h1
+{
+    text-align: center;
+    background-color: cornflowerblue;
+    padding: 10px;
+    font-size: 40px;
+}
+
+header p
+{
+    text-align: center;
+    font-size: 20px;
+}
+
+form
+{
+    border: 2px solid black;
+    box-shadow: 3px 3px 3px black;
+    border-radius: 5px;
+    padding: 20px;
+    text-align: center;
+    background-color: bisque;
+}
+
+#login{
+    margin: 10px auto;
+    font-size: 15px;
+}
+
+#loginSpace{
+    margin: 10px auto;
+    font-size: 15px;
+}
+
+@media screen and (min-width: 1450px) and (max-width: 1960px){
+    form
+    {
+        margin: auto 39%;
+    }
+}
+
+@media screen and (min-width: 1100px) and (max-width: 1450px){
+    form{
+        margin: auto 35%;
+    }
+}
+
+@media screen and (min-width: 800px) and (max-width: 1100px){
+    form{
+        margin: auto 30%;
+    }
+}
+
+@media screen and (max-width: 800px){
+    form{
+        margin: auto 20%;
+    }
+}
+
+table
+{
+    margin: 20px auto;
+    border-collapse: separate;
+    border-spacing: 15px;
+}
+
+td
+{
+    border: 2px solid black;
+    border-radius: 100px;
+    background-color: gainsboro;
+    box-shadow: 2px 2px 2px black;
+    font-size: 30px;
+    padding: 10px;
+}
+
+#effacer{
+    font-size: 20px;
+    padding: 5px;
+    margin-bottom: 20px;
+    border-radius: 5px;
+    box-shadow: 3px 3px 3px black;
+}
+
+td:hover{
+    cursor: pointer;
+}

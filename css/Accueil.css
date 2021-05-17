@@ -1,0 +1,23 @@
+h1{
+    text-align: center;
+    background-color: cornflowerblue;
+    padding: 10px;
+    margin : 10px 0px;
+    border-bottom: 3px solid blue;
+    font-size: 40px;
+}
+
+table{
+    border-collapse: collapse;
+    text-align: center;
+    font-size: 20px;
+}
+
+td{
+    border: 3px solid black;
+    padding: 5px;
+}
+
+div{
+    margin: 50px;
+}
