@@ -30,7 +30,7 @@
             foreach($result as $row){
                 $sql2->execute(array($row['pseudo'], $_POST["Evaluation"], $_POST["Matiere"], $_POST["note".$row['pseudo']], $_POST["remarque".$row["pseudo"]]));
             }
-        
+            echo "<script>alert('Les notes ont bien été enregistrée.');</script>";
             header('location:Accueil.php');
         }
         
@@ -46,9 +46,19 @@
         <title>Ajout note</title>
     </head>
     <body>
-        <div>
-            <a href="Accueil.php">Accueil</a>
-        </div>
+        <header>
+            <section>
+                <h1>Ecole Imaginaire Intranet</h1>
+                <nav>
+                    <ul>
+                        <li><a href="../Index.php">Accueil</a></li>
+                        <li><a href="">Nous rejoindre</a></li>
+                        <li><a href="AjoutNote.php">Ajouter des notes</a></li>
+                        <li><a href="Deconnexion.php">Se déconnecter</a></li>
+                    </ul>
+                </nav>
+            </section>
+        </header>
         <div>
             <p>Veuillez choisir la matière dans laquelle vous souhaitez entrer la note.</p>
             <form method="post" action="<?php echo $_SERVER['PHP_SELF'] ?>">
@@ -71,13 +81,16 @@
                 <?php
                 //Boucle de création du formulaire, plus particulièrement des notes de chaque élèves et leurs remarques
                     foreach($result as $row){
-                        echo $row["pseudo"]." ".$row["Nom"]." ".$row["Prenom"]." : ";
+                        echo $row["pseudo"]." / ".$row["Nom"]." ".$row["Prenom"]." : ";
                         echo "<input type='number' min='0' max='20' placeholder='note' name='note".$row['pseudo']."'>";
-                        echo " Remarque : <textarea name='remarque".$row['pseudo']."' rows='5' cols='33' maxlength='100'></textarea>";
+                        echo " Remarque : <textarea name='remarque".$row['pseudo']."' rows='2' cols='30' maxlength='100'></textarea>";
                         echo "<br>";
                     }
                 ?>
-                <input type="submit" value="Envoyer">
+                <div id="Envoyer">
+                    <input type="submit" value="Envoyer">
+                </div>
+                
             </form>
         </div>
     </body>

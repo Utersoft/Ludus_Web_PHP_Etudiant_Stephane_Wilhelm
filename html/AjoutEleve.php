@@ -7,12 +7,11 @@
         die('ERROR : '.$e->getMessage());
     }
     
-    $sql = $databaseStudents->prepare('INSERT INTO Utilisateurs VALUES (?, ?, ?, ?, ?, ?, ?)');
+    $sql = $databaseStudents->prepare('INSERT INTO Utilisateurs VALUES (?, ?, ?, ?, ?, ?, "0")');
     
     $pseudo = $password = $passwordConfirmation = $firstName = $lastName = $mail = $phone = "";
     $prof = 0;
     $errors = array();
-    $matiere = array('Web', 'C/C++', 'Game Design');
     
     //Vérifie si le boutton avec la méthode post a été cliqué
     if ($_SERVER["REQUEST_METHOD"] == "POST"){
@@ -23,9 +22,6 @@
         $lastName = $_POST["lastname"];
         $mail = $_POST["mail"];
         $phone = $_POST["phone"];
-        if (isset($_POST["prof"])){
-            $prof = 1;
-        }
     }
     
     $testMdp = FALSE;
@@ -56,9 +52,18 @@
         
         //S'il n'y a pas d'erreur, on enregistre les données dans la base de donnée
         if (count($errors) == 0){
-            $sql->execute(array($pseudo, $password, $firstName, $lastName, $mail, $phone, $prof));
+            $sql->execute(array($pseudo, $password, $firstName, $lastName, $mail, $phone));
             
-            header('location: Merci.php');
+            
+            echo "<script>alert('L'élève a bien été enregistré dans la base de donnée');</script>";
+            
+            
+            
+            header('refresh:5; url=Accueil.php');
+            
+            
+            
+            //echo "<script>setTimeout(\"location.href = 'Accueil.php';\",1500);</script>";
         }
     }
     
@@ -75,15 +80,17 @@
     </head>
     <body>
         <header>
-            <div>
+            <section>
                 <h1>Ecole Imaginaire Intranet</h1>
                 <nav>
                     <ul>
-                        <li><a href="../Index.php">Accueil</a></li>
-                        <li><a href="Inscription.php">Nous rejoindre</a></li>
+                        <li><a href="Accueil.php">Accueil</a></li>
+                        <li><a href="AjoutEleve.php">Ajouter un élève</a></li>
+                        <li><a href="AjoutNote.php">Ajouter des notes</a></li>
+                        <li><a href="Deconnexion.php">Se déconnecter</a></li>
                     </ul>
                 </nav>
-            </div>
+            </section>
         </header>
         <div>
             <form method="post" action="<?php echo $_SERVER['PHP_SELF'] ?>">
@@ -91,13 +98,13 @@
                 <br>
                 <input type="text" required name="pseudo" id="pseudo" placeholder="Pseudo">
                 <br>
-                <label for="password">Mot de passe : <bold style="color: red;">*</bold></label>
+                <label for="password">Mot de passe (en chiffre uniquement et 4 maximum) : <bold style="color: red;">*</bold></label>
                 <br>
-                <input type="password" pattern="[0-9]" inputmode="numeric" maxlength="4" required name="password" id="password">
+                <input type="password" inputmode="numeric" maxlength="4" required name="password" id="password" placeholder="Chiffres. 4 maximum!">
                 <br>
                 <label for="passwordConfirmation">Confirmation du mot de passe : <bold style="color: red;">*</bold></label>
                 <br>
-                <input type="password" required name="passwordConfirmation" id="passwordConfirmation">
+                <input type="password" inputmode="numeric" maxlength="4" required name="passwordConfirmation" id="passwordConfirmation">
                 <?php
                     if ($password != $passwordConfirmation){
                         echo '<p style="color:red;">Les deux mots de passe doivent être le même!</p>';
@@ -120,10 +127,7 @@
                 <br>
                 <input type="tel" name="phone" id="phone" placeholder="ex : 0656548978">
                 <br>
-                <label for="prof">Êtes-vous un professeur? </label>
-                <input type="checkbox" name="prof" id="prof">
-                <br>
-                <input type="submit" value="S'inscrire" name="Confirmation">
+                <input type="submit" value="L'inscrire" name="Confirmation">
                 <?php  if (count($errors) > 0) : ?>
                     <div class="error">
                         <?php foreach ($errors as $error) : ?>
@@ -131,8 +135,6 @@
                         <?php endforeach ?>
                     </div>
                 <?php  endif ?>
-                <br>
-                <p>Déjà inscrit? <a href="../Index.php">Se connecter</a></p>
             </form>
         </div>
     </body>

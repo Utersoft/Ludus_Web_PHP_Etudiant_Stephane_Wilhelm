@@ -74,9 +74,20 @@
             if (!isset($_SESSION["login"])){
         ?>
             <header>
+                <div>
+                    <h1>Ecole Imaginaire Intranet</h1>
+                    <nav>
+                        <ul>
+                            <li><a href="/Index.php">Accueil</a></li>
+                            <li><a href="/html/Inscription.php">Nous rejoindre</a></li>
+                        </ul>
+                    </nav>
+                </div>
+            </header>
+            <div id="bienvenue">
                 <h1>Bienvenu utilisateur!</h1>
                 <p>Veuillez vous identifier pour vous connecter.</p>
-            </header>
+            </div>
             <div>
                 <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">
                     <div id="identification">
@@ -141,13 +152,18 @@
                 $result = $sql2->fetchAll();
         ?>
             <header>
-                <h1><?php echo "Bonjour ".$result[0]['Prenom']."!" ?></h1>
+                <div>
+                    <h1>Ecole Imaginaire Intranet</h1>
+                    <nav>
+                        <ul>
+                            <li><a href="/html/Accueil.php">Accueil</a></li>
+                            <li><a href="/html/Deconnexion.php">Se déconnecter</a></li>
+                        </ul>
+                    </nav>
+                </div>
             </header>
             <div>
-                <a href="html/Accueil.php">Accueil</a>
-            </div>
-            <div>
-                <a href="/html/Deconnexion.php">Déconnexion</a>
+                <h2><?php echo "Bonjour ".$result[0]['Prenom']."!" ?></h1>
             </div>
         <?php
             }
