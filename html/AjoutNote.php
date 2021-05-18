@@ -22,16 +22,18 @@
         $result2 = $sql4->fetchAll();
         
         //On vérifie que l'évaluation n'existe pas déjà puisqu'il s'agit de la clef primaire de la table controle
-        if ($result2[0]['evaluation'] == $_POST['Evaluation']){
-            $errors = "Ce nom d'évaluation existe déjà.";
+        if ($result2){
+            if ($result2[0]['evaluation'] == $_POST['Evaluation']){
+                $errors = "Ce nom d'évaluation existe déjà.";
+            }
         }else{
             //Sinon, on enregistre les données dans les tables correspondantes
             $sql3->execute(array( $_POST["Evaluation"], $_POST["Matiere"]));
             foreach($result as $row){
                 $sql2->execute(array($row['pseudo'], $_POST["Evaluation"], $_POST["Matiere"], $_POST["note".$row['pseudo']], $_POST["remarque".$row["pseudo"]]));
             }
+            header('Refresh:0.5; url=Accueil.php', true, 303);
             echo "<script>alert('Les notes ont bien été enregistrée.');</script>";
-            header('location:Accueil.php');
         }
         
     }
@@ -51,8 +53,8 @@
                 <h1>Ecole Imaginaire Intranet</h1>
                 <nav>
                     <ul>
-                        <li><a href="../Index.php">Accueil</a></li>
-                        <li><a href="">Nous rejoindre</a></li>
+                        <li><a href="Accueil.php">Accueil</a></li>
+                        <li><a href="AjoutEleve.php">Ajouter un élève</a></li>
                         <li><a href="AjoutNote.php">Ajouter des notes</a></li>
                         <li><a href="Deconnexion.php">Se déconnecter</a></li>
                     </ul>

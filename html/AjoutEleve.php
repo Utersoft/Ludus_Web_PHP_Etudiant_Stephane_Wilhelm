@@ -55,15 +55,9 @@
             $sql->execute(array($pseudo, $password, $firstName, $lastName, $mail, $phone));
             
             
-            echo "<script>alert('L'élève a bien été enregistré dans la base de donnée');</script>";
+            echo "<script>alert('Un élève a bien été ajouté à la base de donnée');</script>";
             
             
-            
-            header('refresh:5; url=Accueil.php');
-            
-            
-            
-            //echo "<script>setTimeout(\"location.href = 'Accueil.php';\",1500);</script>";
         }
     }
     
