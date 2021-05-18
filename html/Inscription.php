@@ -93,11 +93,11 @@
                 <br>
                 <label for="password">Mot de passe : <bold style="color: red;">*</bold></label>
                 <br>
-                <input type="password" pattern="[0-9]" inputmode="numeric" maxlength="4" required name="password" id="password">
+                <input type="password" inputmode="numeric" maxlength="4" required name="password" id="password" placeholder="Chiffres. 4 maximum!">
                 <br>
                 <label for="passwordConfirmation">Confirmation du mot de passe : <bold style="color: red;">*</bold></label>
                 <br>
-                <input type="password" required name="passwordConfirmation" id="passwordConfirmation">
+                <input type="password" inputmode="numeric" maxlength="4" required name="passwordConfirmation" id="passwordConfirmation">
                 <?php
                     if ($password != $passwordConfirmation){
                         echo '<p style="color:red;">Les deux mots de passe doivent être le même!</p>';
