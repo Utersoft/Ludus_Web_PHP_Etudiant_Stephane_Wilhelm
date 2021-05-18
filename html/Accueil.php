@@ -24,22 +24,22 @@
         <title>Accueil</title>
     </head>
     <body>
-        <header>
-            <section>
-                <h1>Ecole Imaginaire Intranet</h1>
-                <nav>
-                    <ul>
-                        <li><a href="Accueil.php">Accueil</a></li>
-                        <li><a href="AjoutEleve.php">Ajouter un élève</a></li>
-                        <li><a href="AjoutNote.php">Ajouter des notes</a></li>
-                        <li><a href="Deconnexion.php">Se déconnecter</a></li>
-                    </ul>
-                </nav>
-            </section>
-        </header>
         <?php //On check si l'utilisateur est un élève ou un prof
             if ($_SESSION["estProf"]){
                 ?>
+                <header>
+                    <section>
+                        <h1>Ecole Imaginaire Intranet</h1>
+                        <nav>
+                            <ul>
+                                <li><a href="Accueil.php">Accueil</a></li>
+                                <li><a href="AjoutEleve.php">Ajouter un élève</a></li>
+                                <li><a href="AjoutNote.php">Ajouter des notes</a></li>
+                                <li><a href="Deconnexion.php">Se déconnecter</a></li>
+                            </ul>
+                        </nav>
+                    </section>
+                </header>
                 <div>
                     <h2><?php echo "Bonjour M(me) ".$result[0]["Prenom"]." ".$result[0]["Nom"]; ?></h2>
                 </div>
